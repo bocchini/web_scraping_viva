@@ -5,9 +5,11 @@ URL = 'https://www.github.com/'
 
 def search_repository(repository):
     try:
+        if repository[0] == '/':
+            repository == repository[0:]
+
         repository = URL + repository.strip()
         response = requests_get(repository)
-
         if response.status_code == 200:
             return response.text
         elif response.status_code == 404:
