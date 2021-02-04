@@ -1,6 +1,6 @@
-# encurtador
+# Webscraping
 
-A simple micro-SaaS for URL shortening
+A webscrapping capture information about a git repository and return information
 
 ## Clone o repositorio
 

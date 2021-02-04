@@ -17,13 +17,15 @@ class Scanning:
         self.folder_in_repository = set()
         self.archive_repository = set()
 
-    def get_repository_list(self):
+    def get_data_of_repository_list(self):
         html_parser = self.parsing_to_soup(self.repository_to_scanning)
         self.main_page_list(html_parser)
         self.other_pages()
         self.information_archive(self.archive_repository)
-
-        return self.archive_information
+        from controllers.accountant_files import AccountantFiles
+        account_files = AccountantFiles()
+        details = account_files.details_files(self.archive_information)
+        return details
 
     def access_to_page(self, page):
         from controllers.crawler import search_repository
