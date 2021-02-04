@@ -1,11 +1,13 @@
-import asyncio
-
-from data.data_files import read_file
+from data.data_files import read_file, write_file
 from controllers.scanning import Scanning
 
-repo = read_file()
 
-scanning = Scanning(repo[0])
-html_repository = scanning.get_repository_list()
-for html in html_repository.items():
-    print(html)
+def initialize():
+    repo = read_file()
+
+    scanning = Scanning(repo[0])
+    html_repository = scanning.get_data_of_repository_list()
+    print(write_file(html_repository, repo[0]))
+
+
+initialize()
